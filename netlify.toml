@@ -1,0 +1,45 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# CORS Headers for all files
+[[headers]]
+  for = "/**"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "*"
+    Access-Control-Expose-Headers = "*"
+    X-Frame-Options = "ALLOWALL"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Specific headers for assets with long cache
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Frame-Options = "ALLOWALL"
+
+# HTML files
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "text/html; charset=utf-8"
+    X-Frame-Options = "ALLOWALL"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# SPA redirect - ALL requests go to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+

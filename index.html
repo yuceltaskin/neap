@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naerp</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Proxy Hatasını Çözmek İçin Fetch Interceptor (Yönlendirici) -->
+    <script>
+      const originalFetch = window.fetch;
+      window.fetch = async function() {
+        let url = arguments[0];
+        if (typeof url === 'string' && url.includes('corsproxy.io')) {
+          arguments[0] = url.replace('https://corsproxy.io/?', 'https://api.allorigins.win/raw?url=');
+        } else if (url instanceof Request && url.url.includes('corsproxy.io')) {
+          arguments[0] = new Request(url.url.replace('https://corsproxy.io/?', 'https://api.allorigins.win/raw?url='), url);
+        }
+        return originalFetch.apply(this, arguments);
+      };
+    </script>
+    
+    <script defer src="https://nextadop-api.onrender.com/api/public/runtime/bootstrap.js" data-key="na_i83kYoN3i_KIc2nTi8w9GU-m" data-api-base="https://nextadop-api.onrender.com"></script>
+  </body>
+</html>
+
