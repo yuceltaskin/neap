@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Arkaplan -->
+  <rect width="64" height="64" rx="16" fill="#1e40af" />
+  
+  <!-- ERP Modüllerini Temsil Eden Bloklar -->
+  <rect x="18" y="18" width="12" height="12" rx="3" fill="#60a5fa" />
+  <rect x="34" y="18" width="12" height="12" rx="3" fill="#93c5fd" />
+  <rect x="18" y="34" width="12" height="12" rx="3" fill="#3b82f6" />
+  <rect x="34" y="34" width="12" height="12" rx="3" fill="#2563eb" />
+  
+  <!-- Bağlantılar -->
+  <path d="M24 30v4M40 30v4M30 24h4M30 40h4" stroke="#bfdbfe" stroke-width="2" stroke-linecap="round" />
+</svg>
